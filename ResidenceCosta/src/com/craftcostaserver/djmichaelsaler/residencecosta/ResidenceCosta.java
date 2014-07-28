@@ -31,9 +31,14 @@ public class ResidenceCosta extends JavaPlugin{
 		long currenttime = System.currentTimeMillis();
 		long timeago = currenttime - dias*24*60*60*1000;
 		
+		getLogger().info("Current: "+currenttime+" timeago: "+timeago);
+		
 		for (int i=1; i<numpl;i++){
-			if(timeago > getServer().getOfflinePlayers()[i].getLastPlayed())
+			if(timeago > getServer().getOfflinePlayers()[i].getLastPlayed()){
 				allplayers.add(getServer().getOfflinePlayers()[i]);
+				getLogger().info(Long.toString(getServer().getOfflinePlayers()[i].getLastPlayed()));
+			}
+			
 		}
 	}
 }
