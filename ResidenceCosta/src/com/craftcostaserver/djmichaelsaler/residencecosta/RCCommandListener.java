@@ -1,8 +1,5 @@
 package com.craftcostaserver.djmichaelsaler.residencecosta;
 
-import java.util.ArrayList;
-
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -17,9 +14,10 @@ public class RCCommandListener {
 	
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
 		int numero=0;
+		plugin.logger.info("Comando");
 		if(command.getName().equalsIgnoreCase("residencecosta")){
 			if(args.length == 0){
-				plugin.getLogger().info("Imprimir Ayuda");//imprimir ayuda
+				mostrarAyuda(sender,numero);//imprimir ayuda
 			}
 			else if(args[0].equalsIgnoreCase("help")){
 				try{
@@ -38,8 +36,7 @@ public class RCCommandListener {
 					sender.sendMessage("No has introducido el numero de dias");
 				}catch(NumberFormatException e){
 					sender.sendMessage("No has introducido un formato de numero correcto");
-				}
-				plugin.arrayToCollectionOffPlayers(numero);				
+				}				
 			}
 			return true;
 		}
