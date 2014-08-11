@@ -72,7 +72,7 @@ public class ResidenceCosta extends JavaPlugin{
 					long timeago = currenttime - diasrestar;
 
 					residences = rmanager.getResidenceList(false,true);
-
+//
 					for(int i = 0; i<residences.size();i++){
 						if(timeago > getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getLastPlayed() &&
 								!residences.get(i).contains("CB.")){
