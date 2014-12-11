@@ -1,8 +1,6 @@
 package com.craftcostaserver.djmichaelsaler.residencecosta;
 
 import java.util.ArrayList;
-import java.util.Date;
-
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
@@ -81,33 +79,9 @@ public class ResidenceCosta extends JavaPlugin{
 					}
 				}
 				else if(args[0].equalsIgnoreCase("parcelas")){
-					text = new ArrayList<String>();
-					Date now =new Date();
-					long currenttime = now.getTime();
-					long diasrestar = ((long) 35*24*3600*1000);
-					long timeago = currenttime - diasrestar;				
-					residences = rmanager.getResidenceList(false,true);
 
-					for(int i = 0; i<residences.size();i++){
-						if(timeago > getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getLastPlayed() &&
-								residences.get(i).contains("CB.") && !residences.get(i).contains("CB.pv") && !getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).isOnline()){
-							text.add(ChatColor.YELLOW+getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getName()+
-									": "+ChatColor.GREEN+residences.get(i)+" "+ChatColor.DARK_RED+((currenttime-getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getLastPlayed())/86400000)+"d");
-							//logger.info(getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getName()+": "+residences.get(i));
-						}
-					}
-
-					try{
-						numero = Integer.parseInt(args[1]);
-					}catch(ArrayIndexOutOfBoundsException e){
-
-					}catch(NumberFormatException e){
-						sender.sendMessage("Numero de pagina incorrecto");
-						return false;
-					}
-
-					//logger.info(""+text.size());
-					mostrarTexto(sender, numero, text.toArray(new String [text.size()]));
+					Thread parcelas = new Thread(new ThreadParcelas(this, numero, args[1], sender));
+					parcelas.start();
 				}
 				return true;
 			}
@@ -148,7 +122,7 @@ public class ResidenceCosta extends JavaPlugin{
 		return false;
 	}
 	
-	private void mostrarTexto(CommandSender sender,int pagina,String[] texto){
+	void mostrarTexto(CommandSender sender,int pagina,String[] texto){
 		
 		int inicio=(pagina-1)*9;
 		int fin;

@@ -1,7 +1,7 @@
 name: ResidenceCosta
 main: com.craftcostaserver.djmichaelsaler.residencecosta.ResidenceCosta
-version: 0.01
-depend: [WorldEdit, Residence]
+version: 0.01b
+depend: [Residence]
 commands:
    residencecosta:
       description: Este es un comando de ejemplo.
