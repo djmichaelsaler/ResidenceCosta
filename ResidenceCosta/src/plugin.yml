@@ -1,0 +1,19 @@
+name: ResidenceCosta
+main: com.craftcostaserver.djmichaelsaler.residencecosta.ResidenceCosta
+version: 0.01
+depend: [WorldEdit, Residence]
+commands:
+   residencecosta:
+      description: Este es un comando de ejemplo.
+      usage: /<command> [help <page>|purge days|parcelas <page>]
+      permission: residencecosta.residencecosta
+      permission-message: Usted no tiene permiso para utilizar este comando
+   resinfo:
+      description: Este es un comando de ejemplo.
+      usage: /<command> [<player> <page>]
+      permission: residencecosta.resinfo
+      permission-message: Usted no tiene permiso para utilizar este comando
+permissions:
+    residencecosta.residencecosta:
+        description: Permite gestionar las residencias de Craftcosta
+        default: op

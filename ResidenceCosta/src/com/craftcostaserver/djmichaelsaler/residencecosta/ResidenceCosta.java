@@ -1,23 +1,23 @@
 package com.craftcostaserver.djmichaelsaler.residencecosta;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.bekvon.bukkit.residence.Residence;
-import com.bekvon.bukkit.residence.protection.CuboidArea;
 import com.bekvon.bukkit.residence.protection.ResidenceManager;
 
 public class ResidenceCosta extends JavaPlugin{
 	ResidenceManager rmanager;
 	public final Logger logger = Logger.getLogger("Minecraft");
-	//ArrayList<OfflinePlayer> allplayers;
+
 	ArrayList<String> residences;
 	ArrayList<String> text;
 	
@@ -28,7 +28,6 @@ public class ResidenceCosta extends JavaPlugin{
 	@Override
 	public void onEnable() {
 		this.logger.info("[ResidenceCosta] Puglin cargado");
-		//this.allplayers = new ArrayList<OfflinePlayer>();
 	}
 	
 	@Override
@@ -72,23 +71,19 @@ public class ResidenceCosta extends JavaPlugin{
 					long timeago = currenttime - diasrestar;
 
 					residences = rmanager.getResidenceList(false,true);
-//
+					
 					for(int i = 0; i<residences.size();i++){
 						if(timeago > getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getLastPlayed() &&
 								!residences.get(i).contains("CB.")){
 							
 							sender.sendMessage(ChatColor.DARK_GREEN+getServer().getOfflinePlayer(rmanager.getByName(residences.get(i)).getOwner()).getName()+": "+ChatColor.GOLD+residences.get(i));
-							
-							//Location high = rmanager.getByName(residences.get(i)).getAreaArray()[0].getHighLoc();
-							//Location low = rmanager.getByName(residences.get(i)).getAreaArray()[0].getLowLoc();
-							//getServer().getWorld("world").
-							
 						}
 					}
 				}
 				else if(args[0].equalsIgnoreCase("parcelas")){
 					text = new ArrayList<String>();
-					long currenttime = System.currentTimeMillis();
+					Date now =new Date();
+					long currenttime = now.getTime();
 					long diasrestar = ((long) 35*24*3600*1000);
 					long timeago = currenttime - diasrestar;				
 					residences = rmanager.getResidenceList(false,true);
@@ -132,7 +127,24 @@ public class ResidenceCosta extends JavaPlugin{
 				}
 			}
 			return true;
-		}		
+		}
+		/*else if(command.getName().equalsIgnoreCase("parcelas")){
+			if(sender.hasPermission("residencecosta.parcelas")){
+				Player player = (Player) sender;
+				if(args.length == 0){
+					mostrarTexto(sender,numero,this.parcelas);//imprimir ayuda
+				}
+				else if(args[0].equalsIgnoreCase("help")){
+					mostrarTexto(sender,numero,this.parcelas);//imprimir ayuda
+				}
+				else if(args[0].equalsIgnoreCase("pequenya")){					
+					player.teleport(this.ressdh.getSignList().get(parcelaspeq.get(0)).getBlock().getLocation());
+				}
+				else if(args[0].equalsIgnoreCase("grande")){
+					player.teleport(this.ressdh.getSignList().get(parcelasgra.get(0)).getBlock().getLocation());
+				}
+			}
+		}*/
 		return false;
 	}
 	
@@ -150,6 +162,8 @@ public class ResidenceCosta extends JavaPlugin{
 		for(int i=inicio;i<fin;i++){
 			sender.sendMessage(texto[i]);
 		}
-		sender.sendMessage(ChatColor.YELLOW+"Mostrando pagina "+pagina+" de "+(int)Math.ceil((texto.length/9)+1));
+		//sender.sendMessage(ChatColor.YELLOW+"Mostrando pagina "+pagina+" de "+(int)Math.ceil((texto.length/9)+1));
+		sender.sendMessage(ChatColor.YELLOW+"Mostrando pagina "+pagina+" de "+(texto.length/9)+1);
 	}
+
 }
