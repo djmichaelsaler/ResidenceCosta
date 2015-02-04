@@ -4,7 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/Users/djmichaelsaler/Desktop/API Bukkit/Residence.jar"/>
 	<classpathentry kind="lib" path="C:/Users/djmichaelsaler/Desktop/API Bukkit/bukkit-1.7.2-R0.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/djmichaelsaler/Desktop/API Bukkit/worldedit-5.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/djmichaelsaler/Desktop/API Bukkit/ResidenceSigns.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrador/Desktop/BukkitApi/bukkit-1.7.2-R0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrador/Desktop/BukkitApi/Residence.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

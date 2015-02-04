@@ -8,11 +8,13 @@ commands:
       usage: /<command> [help <page>|purge days|parcelas <page>]
       permission: residencecosta.residencecosta
       permission-message: Usted no tiene permiso para utilizar este comando
+      aliases: [resc, rsc]
    resinfo:
       description: Este es un comando de ejemplo.
       usage: /<command> [<player> <page>]
       permission: residencecosta.resinfo
       permission-message: Usted no tiene permiso para utilizar este comando
+      aliases: [resci, rsci]
 permissions:
     residencecosta.residencecosta:
         description: Permite gestionar las residencias de Craftcosta
